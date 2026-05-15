@@ -39,27 +39,31 @@
         .header { margin-top: 50px; margin-bottom: 30px; }
         .header h1 { font-size: 48px; font-weight: 900; margin: 0; letter-spacing: -2px; }
 
+        .arch-header {
+            background: var(--red);
+            color: black;
+            padding: 5px 15px;
+            font-weight: 900;
+            font-size: 14px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 20px 0 10px 0;
+        }
+
+        .compat-list {
+            font-size: 9px;
+            color: #666;
+            margin: 5px 0 15px 5px;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
         #home-view, #bundle-view { display: none; animation: fadeIn 0.3s ease-out; }
         .active-view { display: block !important; }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: scale(0.98); }
             to { opacity: 1; transform: scale(1); }
-        }
-
-        .search-wrapper { margin-bottom: 35px; }
-        #ipaSearch {
-            width: 100%;
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 2px solid var(--border);
-            border-radius: 20px;
-            padding: 18px 25px;
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            outline: none;
         }
 
         .app-card {
@@ -74,10 +78,10 @@
             margin-bottom: 15px;
         }
 
-        .app-icon { width: 70px; height: 70px; border-radius: 16px; background: #111; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .app-icon { width: 70px; height: 70px; border-radius: 16px; background: #111; object-fit: cover; }
         .app-info { flex-grow: 1; }
         .app-info h3 { margin: 0; font-size: 18px; font-weight: 900; }
-        .app-info p { margin: 4px 0 0; font-size: 10px; color: #888; font-weight: 700; }
+        .app-info p { margin: 4px 0 0; font-size: 10px; color: var(--red); font-weight: 900; }
 
         .btn-get {
             background: var(--red);
@@ -87,19 +91,7 @@
             font-size: 12px;
             padding: 10px 20px;
             border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-            display: inline-block;
         }
-
-        .bundle-box {
-            border: 3px solid var(--red);
-            border-radius: 35px;
-            padding: 20px;
-            margin-bottom: 40px;
-            background: rgba(255, 0, 0, 0.05);
-        }
-
-        .bundle-header h2 { font-size: 26px; font-weight: 900; margin: 0 0 20px 0; color: var(--red); }
 
         .dock {
             position: fixed;
@@ -116,7 +108,7 @@
         }
 
         .dock-btn { color: #444; font-weight: 900; font-size: 14px; cursor: pointer; }
-        .dock-btn.active { color: var(--red); text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+        .dock-btn.active { color: var(--red); }
     </style>
 </head>
 <body>
@@ -125,95 +117,54 @@
         <header class="header"><h1>SHOPPER</h1></header>
 
         <div id="home-view" class="active-view">
-            <div class="search-wrapper">
-                <input type="text" id="ipaSearch" placeholder="SEARCH SINGLES..." onkeyup="runSearch()">
-            </div>
             
-            <div id="mainGrid">
-                <div class="app-card app-item" data-name="GEODE">
-                    <img src="geode_icon.png" class="app-icon">
-                    <div class="app-info"><h3>GEODE</h3><p>MODS FOR GD</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/geode.ipa" class="btn-get">GET</a>
-                </div>
-
-                <div class="app-card app-item" data-name="FNAF 1">
-                    <img src="fnaf1_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 1</h3><p>HORROR</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf1.ipa" class="btn-get">GET</a>
-                </div>
-
-                <div class="app-card app-item" data-name="FNAF 2">
-                    <img src="fnaf2_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 2</h3><p>HORROR</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf2.ipa" class="btn-get">GET</a>
-                </div>
-
-                <div class="app-card app-item" data-name="FNAF 3">
-                    <img src="fnaf3_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 3</h3><p>HORROR</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf3.ipa" class="btn-get">GET</a>
-                </div>
-
-                <div class="app-card app-item" data-name="FNAF 4">
-                    <img src="fnaf4_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 4</h3><p>HORROR</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf4.ipa" class="btn-get">GET</a>
-                </div>
+            <div class="arch-header">32-BIT APPS</div>
+            <div class="compat-list">
+                COMPATIBLE WITH: IPAD 1, 2, 3, 4 / IPAD MINI 1 / IOS 10 & LOWER
             </div>
-        </div>
 
-        <div id="bundle-view">
-            <div class="bundle-box">
-                <div class="bundle-header"><h2>FNAF COLLECTION</h2></div>
-                
-                <div class="app-card">
-                    <img src="fnaf1_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 1</h3><p>CLASSIC</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf1.ipa" class="btn-get">GET</a>
-                </div>
-
-                <div class="app-card">
-                    <img src="fnaf2_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 2</h3><p>SEQUEL</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf2.ipa" class="btn-get">GET</a>
-                </div>
-
-                <div class="app-card">
-                    <img src="fnaf3_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 3</h3><p>PHANTOM</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf3.ipa" class="btn-get">GET</a>
-                </div>
-
-                <div class="app-card">
-                    <img src="fnaf4_icon.png" class="app-icon">
-                    <div class="app-info"><h3>FNAF 4</h3><p>NIGHTMARE</p></div>
-                    <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf4.ipa" class="btn-get">GET</a>
-                </div>
+            <div class="app-card">
+                <img src="fnaf1_icon.png" class="app-icon">
+                <div class="app-info"><h3>FNAF 1</h3><p>32-BIT ONLY</p></div>
+                <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf1.ipa" class="btn-get">GET</a>
             </div>
+
+            <div class="app-card">
+                <img src="fnaf2_icon.png" class="app-icon">
+                <div class="app-info"><h3>FNAF 2</h3><p>32-BIT ONLY</p></div>
+                <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf2.ipa" class="btn-get">GET</a>
+            </div>
+
+            <div class="app-card">
+                <img src="fnaf3_icon.png" class="app-icon">
+                <div class="app-info"><h3>FNAF 3</h3><p>32-BIT ONLY</p></div>
+                <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf3.ipa" class="btn-get">GET</a>
+            </div>
+
+            <div class="app-card">
+                <img src="fnaf4_icon.png" class="app-icon">
+                <div class="app-info"><h3>FNAF 4</h3><p>32-BIT ONLY</p></div>
+                <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf4.ipa" class="btn-get">GET</a>
+            </div>
+
+            <div class="arch-header">64-BIT APPS</div>
+            <div class="compat-list">
+                COMPATIBLE WITH: IPAD AIR 1-5 / IPAD PRO / IPAD MINI 2+ / IOS 11+
+            </div>
+
+            <div class="app-card" style="opacity: 0.6;">
+                <div class="app-icon" style="display:flex; align-items:center; justify-content:center; color:#333;">?</div>
+                <div class="app-info"><h3>NEW APPS</h3><p>64-BIT SECTION</p></div>
+                <span class="btn-get" style="background:#222;">SOON</span>
+            </div>
+
         </div>
     </div>
 
     <nav class="dock">
-        <div class="dock-btn active" id="btn-home" onclick="switchTab('home')">HOME</div>
-        <div class="dock-btn" id="btn-bundle" onclick="switchTab('bundle')">BUNDLES</div>
+        <div class="dock-btn active">HOME</div>
+        <div class="dock-btn">BUNDLES</div>
     </nav>
 
-    <script>
-        function switchTab(tab) {
-            document.getElementById('home-view').classList.toggle('active-view', tab === 'home');
-            document.getElementById('bundle-view').classList.toggle('active-view', tab === 'bundle');
-            document.getElementById('btn-home').classList.toggle('active', tab === 'home');
-            document.getElementById('btn-bundle').classList.toggle('active', tab === 'bundle');
-        }
-
-        function runSearch() {
-            const query = document.getElementById('ipaSearch').value.toUpperCase();
-            const items = document.getElementsByClassName('app-item');
-            for (let i = 0; i < items.length; i++) {
-                const name = items[i].getAttribute('data-name');
-                items[i].style.display = name.includes(query) ? "flex" : "none";
-            }
-        }
-    </script>
 </body>
 </html>

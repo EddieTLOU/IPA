@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>IPA SHOPPER</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --red: #FF0000;
+            --glass: rgba(25, 25, 25, 0.85);
+            --border: rgba(255, 0, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            text-transform: uppercase;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 10% 10%, rgba(255, 0, 0, 0.15), transparent 50%);
+        }
+
+        .container {
+            padding: 25px;
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding-bottom: 150px;
+        }
+
+        .header { margin-top: 50px; margin-bottom: 30px; }
+        .header h1 { font-size: 48px; font-weight: 900; margin: 0; letter-spacing: -2px; }
+
+        #home-view, #bundle-view { display: none; animation: fadeIn 0.3s ease-out; }
+        .active-view { display: block !important; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .search-wrapper { margin-bottom: 35px; }
+        #ipaSearch {
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 18px 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            outline: none;
+        }
+
+        .app-card {
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .app-icon { width: 70px; height: 70px; border-radius: 16px; background: #111; object-fit: cover; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .app-info { flex-grow: 1; }
+        .app-info h3 { margin: 0; font-size: 18px; font-weight: 900; }
+        .app-info p { margin: 4px 0 0; font-size: 10px; color: #888; font-weight: 700; }
+
+        .btn-get {
+            background: var(--red);
+            color: white;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 12px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .bundle-box {
+            border: 3px solid var(--red);
+            border-radius: 35px;
+            padding: 20px;
+            margin-bottom: 40px;
+            background: rgba(255, 0, 0, 0.05);
+        }
+
+        .bundle-header h2 { font-size: 26px; font-weight: 900; margin: 0 0 20px 0; color: var(--red); }
+
+        .dock {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 0, 0, 0.95);
+            border: 2px solid var(--red);
+            padding: 15px 40px;
+            border-radius: 50px;
+            display: flex;
+            gap: 50px;
+            z-index: 1000;
+        }
+
+        .dock-btn { color: #444; font-weight: 900; font-size: 14px; cursor: pointer; }
+        .dock-btn.active { color: var(--red); text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header"><h1>SHOPPER</h1></header>
+
+        <!-- HOME VIEW -->
+        <div id="home-view" class="active-view">
+            <div class="search-wrapper">
+                <input type="text" id="ipaSearch" placeholder="SEARCH SINGLES..." onkeyup="runSearch()">
+            </div>
+            
+            <div id="mainGrid">
+                <!-- GEODE WITH CUSTOM SUBTEXT -->
+                <div class="app-card app-item" data-name="GEODE">
+                    <img src="geode_icon.png" class="app-icon">
+                    <div class="app-info">
+                        <h3>GEODE</h3>
+                        <p>MODS FOR GD</p>
+                    </div>
+                    <a href="geode.ipa" class="btn-get">GET</a>
+                </div>
+
+                <!-- FNAF SINGLES -->
+                <div class="app-card app-item" data-name="FNAF 1">
+                    <img src="fnaf1_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 1</h3><p>HORROR</p></div>
+                    <a href="fnaf1.ipa" class="btn-get">GET</a>
+                </div>
+
+                <div class="app-card app-item" data-name="FNAF 2">
+                    <img src="fnaf2_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 2</h3><p>HORROR</p></div>
+                    <a href="fnaf2.ipa" class="btn-get">GET</a>
+                </div>
+
+                <div class="app-card app-item" data-name="FNAF 3">
+                    <img src="fnaf3_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 3</h3><p>HORROR</p></div>
+                    <a href="fnaf3.ipa" class="btn-get">GET</a>
+                </div>
+
+                <div class="app-card app-item" data-name="FNAF 4">
+                    <img src="fnaf4_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 4</h3><p>HORROR</p></div>
+                    <a href="fnaf4.ipa" class="btn-get">GET</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- BUNDLES VIEW -->
+        <div id="bundle-view">
+            <div class="bundle-box">
+                <div class="bundle-header">
+                    <h2>FNAF COLLECTION</h2>
+                </div>
+                
+                <div class="app-card">
+                    <img src="fnaf1_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 1</h3><p>CLASSIC</p></div>
+                    <a href="fnaf1.ipa" class="btn-get">GET</a>
+                </div>
+
+                <div class="app-card">
+                    <img src="fnaf2_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 2</h3><p>SEQUEL</p></div>
+                    <a href="fnaf2.ipa" class="btn-get">GET</a>
+                </div>
+
+                <div class="app-card">
+                    <img src="fnaf3_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 3</h3><p>PHANTOM</p></div>
+                    <a href="fnaf3.ipa" class="btn-get">GET</a>
+                </div>
+
+                <div class="app-card">
+                    <img src="fnaf4_icon.png" class="app-icon">
+                    <div class="app-info"><h3>FNAF 4</h3><p>NIGHTMARE</p></div>
+                    <a href="fnaf4.ipa" class="btn-get">GET</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="dock">
+        <div class="dock-btn active" id="btn-home" onclick="switchTab('home')">HOME</div>
+        <div class="dock-btn" id="btn-bundle" onclick="switchTab('bundle')">BUNDLES</div>
+    </nav>
+
+    <script>
+        function switchTab(tab) {
+            document.getElementById('home-view').classList.toggle('active-view', tab === 'home');
+            document.getElementById('bundle-view').classList.toggle('active-view', tab === 'bundle');
+            document.getElementById('btn-home').classList.toggle('active', tab === 'home');
+            document.getElementById('btn-bundle').classList.toggle('active', tab === 'bundle');
+        }
+
+        function runSearch() {
+            const query = document.getElementById('ipaSearch').value.toUpperCase();
+            const items = document.getElementsByClassName('app-item');
+            for (let i = 0; i < items.length; i++) {
+                const name = items[i].getAttribute('data-name');
+                items[i].style.display = name.includes(query) ? "flex" : "none";
+            }
+        }
+    </script>
+</body>
+</html>

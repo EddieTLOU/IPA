@@ -39,6 +39,15 @@
         .header { margin-top: 50px; margin-bottom: 30px; }
         .header h1 { font-size: 48px; font-weight: 900; margin: 0; letter-spacing: -2px; }
 
+        /* TAB LOGIC */
+        .tab-content { display: none; animation: fadeIn 0.3s ease-out; }
+        .active-view { display: block !important; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .arch-header {
             background: var(--red);
             color: black;
@@ -47,23 +56,15 @@
             font-size: 14px;
             border-radius: 8px;
             display: inline-block;
-            margin: 20px 0 10px 0;
+            margin-bottom: 10px;
         }
 
         .compat-list {
-            font-size: 9px;
-            color: #666;
-            margin: 5px 0 15px 5px;
-            line-height: 1.4;
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 25px;
             font-weight: 600;
-        }
-
-        #home-view, #bundle-view { display: none; animation: fadeIn 0.3s ease-out; }
-        .active-view { display: block !important; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.98); }
-            to { opacity: 1; transform: scale(1); }
+            letter-spacing: 1px;
         }
 
         .app-card {
@@ -93,6 +94,7 @@
             border-radius: 20px;
         }
 
+        /* DOCK NAVIGATION */
         .dock {
             position: fixed;
             bottom: 30px;
@@ -100,14 +102,21 @@
             transform: translateX(-50%);
             background: rgba(10, 0, 0, 0.95);
             border: 2px solid var(--red);
-            padding: 15px 40px;
+            padding: 15px 30px;
             border-radius: 50px;
             display: flex;
-            gap: 50px;
+            gap: 30px;
             z-index: 1000;
         }
 
-        .dock-btn { color: #444; font-weight: 900; font-size: 14px; cursor: pointer; }
+        .dock-btn { 
+            color: #555; 
+            font-weight: 900; 
+            font-size: 13px; 
+            cursor: pointer; 
+            transition: 0.2s;
+        }
+        
         .dock-btn.active { color: var(--red); }
     </style>
 </head>
@@ -116,55 +125,66 @@
     <div class="container">
         <header class="header"><h1>SHOPPER</h1></header>
 
-        <div id="home-view" class="active-view">
-            
-            <div class="arch-header">32-BIT APPS</div>
-            <div class="compat-list">
-                COMPATIBLE WITH: IPAD 1, 2, 3, 4 / IPAD MINI 1 / IOS 10 & LOWER
+        <div id="view-64" class="tab-content active-view">
+            <div class="arch-header">64-BIT LIBRARY</div>
+            <div class="compat-list">IPAD AIR / PRO / MINI 2+ (IOS 11+)</div>
+
+            <div class="app-card" style="opacity: 0.5;">
+                <div class="app-icon" style="display:flex; align-items:center; justify-content:center; color:#333;">?</div>
+                <div class="app-info"><h3>COMING SOON</h3><p>64-BIT APPS</p></div>
+                <span class="btn-get" style="background:#222;">...</span>
             </div>
+        </div>
+
+        <div id="view-32" class="tab-content">
+            <div class="arch-header">32-BIT LIBRARY</div>
+            <div class="compat-list">IPAD 1-4 / MINI 1 (IOS 6-10)</div>
 
             <div class="app-card">
                 <img src="fnaf1_icon.png" class="app-icon">
-                <div class="app-info"><h3>FNAF 1</h3><p>32-BIT ONLY</p></div>
+                <div class="app-info"><h3>FNAF 1</h3><p>LEGACY IPA</p></div>
                 <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf1.ipa" class="btn-get">GET</a>
             </div>
 
             <div class="app-card">
                 <img src="fnaf2_icon.png" class="app-icon">
-                <div class="app-info"><h3>FNAF 2</h3><p>32-BIT ONLY</p></div>
+                <div class="app-info"><h3>FNAF 2</h3><p>LEGACY IPA</p></div>
                 <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf2.ipa" class="btn-get">GET</a>
             </div>
 
             <div class="app-card">
                 <img src="fnaf3_icon.png" class="app-icon">
-                <div class="app-info"><h3>FNAF 3</h3><p>32-BIT ONLY</p></div>
+                <div class="app-info"><h3>FNAF 3</h3><p>LEGACY IPA</p></div>
                 <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf3.ipa" class="btn-get">GET</a>
             </div>
 
             <div class="app-card">
                 <img src="fnaf4_icon.png" class="app-icon">
-                <div class="app-info"><h3>FNAF 4</h3><p>32-BIT ONLY</p></div>
+                <div class="app-info"><h3>FNAF 4</h3><p>LEGACY IPA</p></div>
                 <a href="https://github.com/EddieTLOU/IPA/releases/download/v1.0/fnaf4.ipa" class="btn-get">GET</a>
             </div>
-
-            <div class="arch-header">64-BIT APPS</div>
-            <div class="compat-list">
-                COMPATIBLE WITH: IPAD AIR 1-5 / IPAD PRO / IPAD MINI 2+ / IOS 11+
-            </div>
-
-            <div class="app-card" style="opacity: 0.6;">
-                <div class="app-icon" style="display:flex; align-items:center; justify-content:center; color:#333;">?</div>
-                <div class="app-info"><h3>NEW APPS</h3><p>64-BIT SECTION</p></div>
-                <span class="btn-get" style="background:#222;">SOON</span>
-            </div>
-
         </div>
+
     </div>
 
     <nav class="dock">
-        <div class="dock-btn active">HOME</div>
-        <div class="dock-btn">BUNDLES</div>
+        <div class="dock-btn active" id="btn-64" onclick="showTab('64')">64-BIT</div>
+        <div class="dock-btn" id="btn-32" onclick="showTab('32')">32-BIT</div>
     </nav>
+
+    <script>
+        function showTab(arch) {
+            // Hide all views
+            document.querySelectorAll('.tab-content').forEach(view => view.classList.remove('active-view'));
+            // Remove active color from buttons
+            document.querySelectorAll('.dock-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Show selected view
+            document.getElementById('view-' + arch).classList.add('active-view');
+            // Light up selected button
+            document.getElementById('btn-' + arch).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
